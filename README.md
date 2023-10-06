@@ -91,9 +91,9 @@ Contributions are welcome! Read the [Contributing Guidelines](CONTRIBUTING.md) f
 If you have any questions or feedback, feel free to reach out:
 
 - **Email:** [Kholofelo Tladi](mailto:tladi.kholofelo@gmail.com)
-- **LinkedIn:** [Kholofelo Tladi](https://www.linkedin.com/in/kholofelo-tladi/)
+- **LinkedIn:** [Kholofelo Tladi](https://www.linkedin.com/in/kholofelotladi/)
 - **GitHub:** [Kholofelo Tladi](https://github.com/tladikholofelo)
-- **Twitter:** [@thatkholofelo](https://twitter.com/YourTwitterHandle)
+- **Twitter:** [@thatkholofelo](https://twitter.com/thatkholofelo)
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
