@@ -1,0 +1,107 @@
+{
+    "jobs": [
+      {
+        "id": "1",
+        "title": "Front-end Developer",
+        "company": "TechSolutions Inc.",
+        "location": "San Francisco, CA",
+        "salary": "$90,000 - $110,000",
+        "description": "TechSolutions Inc. is seeking a talented Front-end Developer to join our team. You will work on creating responsive and interactive web applications using the latest technologies such as React, HTML5, and CSS3.",
+        "requirements": [
+          "2+ years of experience with React.js",
+          "Strong proficiency in HTML/CSS",
+          "Experience with RESTful APIs",
+          "Excellent problem-solving skills",
+          "Good communication skills"
+        ],
+        "postedDate": "2023-09-15",
+        "deadline": "2023-10-06"
+      },
+      {
+        "id": "2",
+        "title": "Full-stack Developer",
+        "company": "CodeCrafters LLC",
+        "location": "New York, NY",
+        "salary": "$100,000 - $120,000",
+        "description": "CodeCrafters LLC is looking for a Full-stack Developer who is passionate about building web applications from front to back. You will be responsible for both client-side and server-side development.",
+        "requirements": [
+          "3+ years of experience with Node.js and Express",
+          "Proficiency in front-end technologies like React or Angular",
+          "Strong database skills (SQL or NoSQL)",
+          "Git version control experience",
+          "Ability to work in a collaborative team environment"
+        ],
+        "postedDate": "2023-09-14",
+        "deadline": "2023-10-13"
+      },
+      {
+        "id": "3",
+        "title": "Mobile App Developer",
+        "company": "AppGenius Co.",
+        "location": "Los Angeles, CA",
+        "salary": "$85,000 - $100,000",
+        "description": "Join AppGenius Co. and be part of a dynamic team developing cutting-edge mobile applications for iOS and Android. We are seeking a Mobile App Developer with a passion for creating exceptional user experiences.",
+        "requirements": [
+          "Experience with Swift and/or Kotlin",
+          "Familiarity with mobile UI/UX design principles",
+          "Knowledge of RESTful APIs",
+          "Published apps on the App Store or Google Play",
+          "Problem-solving mindset"
+        ],
+        "postedDate": "2023-09-13",
+        "deadline": "2023-10-03"
+      },
+      {
+        "id": "4",
+        "title": "DevOps Engineer",
+        "company": "CloudMasters Inc.",
+        "location": "Seattle, WA",
+        "salary": "$110,000 - $130,000",
+        "description": "CloudMasters Inc. is looking for a DevOps Engineer to optimize and automate our cloud infrastructure. You will play a critical role in ensuring the reliability and scalability of our services.",
+        "requirements": [
+          "Strong experience with AWS or Azure",
+          "Proficiency in scripting languages (e.g., Python, Bash)",
+          "Containerization and orchestration experience (Docker, Kubernetes)",
+          "Continuous integration/continuous deployment (CI/CD) knowledge",
+          "Security best practices"
+        ],
+        "postedDate": "2023-09-12",
+        "deadline": "2023-10-16"
+      },
+      {
+        "id": "5",
+        "title": "Data Scientist",
+        "company": "DataInsights Corp.",
+        "location": "Chicago, IL",
+        "salary": "$95,000 - $115,000",
+        "description": "DataInsights Corp. is seeking a Data Scientist to analyze large datasets and provide valuable insights to drive business decisions. You will work on cutting-edge data analytics projects.",
+        "requirements": [
+          "Proficiency in Python and data analysis libraries (e.g., Pandas, NumPy)",
+          "Experience with machine learning and statistical modeling",
+          "SQL database knowledge",
+          "Strong communication and data visualization skills",
+          "Ability to work independently"
+        ],
+        "postedDate": "2023-09-11",
+        "deadline": "2023-10-18"
+      },
+      {
+        "id": "6",
+        "title": "Backend Developer",
+        "company": "CodeTech Solutions",
+        "location": "Washington, DC",
+        "salary": "$115,000 - $145,000",
+        "description": "CodeTech Solutions is seeking a Data Scientist to analyze large datasets and provide valuable insights to drive business decisions. You will work on cutting-edge data analytics projects.",
+        "requirements": [
+          "Proficiency in Python and data analysis libraries (e.g., Pandas, NumPy)",
+          "Experience with machine learning and statistical modeling",
+          "SQL database knowledge",
+          "Strong communication and data visualization skills",
+          "Ability to work independently"
+        ],
+        "postedDate": "2023-09-11",
+        "deadline": "2023-10-04"
+      }
+    ]
+  }
+  
