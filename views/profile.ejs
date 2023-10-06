@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ByteFinder Co. | Dev Jobs Made Easy</title>
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        /* Customization styles */
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .profile-card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-card p {
+            margin-top: 10px;
+            line-height: 0.5;
+        }
+
+        .profile-picture {
+            max-width: 25%;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-auto fixed-top bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/home"> ByteFinder Co.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/featured-jobs">Featured Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/bookmarked-jobs">Bookmarked Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Left Column: Profile -->
+            <div class="col-md-4 mt-3">
+                <div class="card profile-card">
+                    <div class="card-header">
+                        <h2 class="text-center mb-0">Public Profile</h2>
+                    </div>
+                    <div class="card-body text-center">
+                        <!-- Profile Picture -->
+                        <img src="/b-user.png" alt="Profile Picture" class="profile-picture mb-3">
+                        
+                        <!-- Profile Information -->
+                        <h4><%= user.fullName + ' ' + user.surname %></h4> <!-- Full Name: -->
+                        <p><%= user.username %></p> <!-- Username: -->
+                        <p><%= user.email %></p> <!-- Email: -->
+
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                            Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Profile Modal -->
+            <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editProfileModalLabel">Edit Your Profile</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Edit Profile Form -->
+                            <form action="/edit-profile" method="POST" novalidate>
+                                <!-- Display validation errors -->
+                                <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+                                    <div class="alert alert-danger">
+                                    <ul>
+                                        <% errors.forEach(error => { %>
+                                        <<p class="error-message"><%= error.msg %></p>
+                                        <% }); %>
+                                    </ul>
+                                    </div>
+                                <% } %>
+
+                                <!-- Profile Form Fields... -->
+                                <div class="mb-3">
+                                    <label for="fullName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="fullName" name="fullName" value="<%= user.fullName %>" required pattern="[A-Za-z\s]+">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid full name.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="surname" class="form-label">Surname</label>
+                                    <input type="text" class="form-control" id="surname" name="surname" value="<%= user.surname %>" required pattern="[A-Za-z\s]+">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid surname.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="username" name="username" value="<%= user.username %>" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid username.
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" value="<%= user.email %>" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+                                    <div class="invalid-feedback">
+                                        Please provide a valid email address.
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Column: Education, Experience, Skills -->
+            <!-- Experience -->
+            <div class="col-md-4 mt-3">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h2 class="mb-0">Experience</h2>
+                    </div>
+                    <div class="card-body">
+                    <!-- Experiences dynamically populated here -->
+                        <ul id="experienceList">
+                            <% try { %>
+                                <% if (user.experience && Array.isArray(user.experience) && user.experience.length > 0) { %>
+                                    <% user.experience.forEach(exp => { %>
+                                        <li><%= exp.title %> at <%= exp.company %> (<%= exp.startDate %> - <%= exp.endDate %>): <%= exp.description %></li>
+                                    <% }); %>
+                                <% } else { %>
+                                    <li>No experience available</li>
+                                <% } %>
+                            <% } catch (error) { %>
+                                <li>Error rendering experience: <%= error.message %></li>
+                            <% } %>
+                        </ul>
+
+                        <!-- Edit Button for Experience -->
+                        <a href="/edit-experiences.ejs" onclick="openModal('experiences')">Edit Experiences</a>
+                    </div>
+                </div>
+
+                <!-- Education Section -->
+                <div class="card mt-4">
+                    <div class="card-header bg-secondary text-white">
+                        <h2 class="mb-0">Education</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <% if (user.education && user.education.length > 0) { %>
+                                <% user.education.forEach(edu => { %>
+                                    <li><%= edu %></li>
+                                <% }); %>
+                            <% } else { %>
+                                <li>No education available</li>
+                            <% } %>
+                        </ul>
+
+                        <!-- Edit Button for Education -->
+                        <a href="/edit-education.ejs" onclick="openModal('education')">Edit Education</a>
+                    </div>
+                </div>
+
+                <!-- Skills Section -->
+                <div class="card mt-4">
+                    <div class="card-header bg-secondary text-white">
+                        <h2 class="mb-0">Skills</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <% if (user.skills && user.skills.length > 0) { %>
+                                <% user.skills.forEach(skill => { %>
+                                    <li><%= skill %></li>
+                                <% }); %>
+                            <% } else { %>
+                                <li>No skills available</li>
+                            <% } %>
+                        </ul>
+
+                        <!-- Edit Button for Skills -->
+                        <a href="/edit-skills" onclick="openModal('skills')">Edit Skills</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Projects -->
+            <div class="col-md-4 mt-3">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h2 class="mb-0">Projects</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <% if (user.projects && user.projects.length > 0) { %>
+                                <% user.projects.forEach(project => { %>
+                                    <li><%= project %></li>
+                                <% }); %>
+                            <% } else { %>
+                                <li>No projects available</li>
+                            <% } %>
+                        </ul>
+
+                        <!-- Edit Button for Projects -->
+                        <a href="/edit-projects">Manage Projects</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>      
+
+    <!-- Footer -->
+    <footer class="my-5 pt-5 text-body-secondary text-center text-small">
+        <p class="mb-1">&copy; 2022–2023 ByteFinder Co.</p>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Privacy</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+
+    <!-- Bootstrap JS and jQuery (for Bootstrap components) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+    <script>
+        document.getElementById('openEditProfileModalBtn').addEventListener('click', function () {
+          var myModal = new bootstrap.Modal(document.getElementById('editProfileModal'));
+          myModal.show();
+        });
+    </script>
+</body>
+</html>
