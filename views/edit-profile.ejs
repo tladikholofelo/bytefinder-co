@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit Profile</title>
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 50px auto;
+        }
+
+        form.was-validated .form-control:invalid,
+        form.was-validated .form-control:valid {
+            background-color: #fff;
+        }
+
+        form.was-validated .form-control:invalid {
+            border-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Edit Profile Form -->
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <h1 class="display-3 fw-bold lh-1 text-body-emphasis mb-3">Edit Your Profile</h1>
+                <!-- Add any other information or instructions here -->
+            </div>
+            <div class="col-md-10 mx-auto col-lg-5">
+                <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" action="/edit-profile" method="POST" novalidate>
+                    <!-- Display validation errors -->
+                    <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+                        <div class="alert alert-danger">
+                            <ul>
+                                <% errors.forEach(error => { %>
+                                    <li><%= error.msg %></li>
+                                <% }); %>
+                            </ul>
+                        </div>
+                    <% } %>
+
+                    <!-- Fields -->
+                    <div class="mb-3">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" name="fullName" value="<%= user.fullName %>" required pattern="[A-Za-z\s]+">
+                        <div class="invalid-feedback">
+                            Please provide a valid full name.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="surname" class="form-label">Surname</label>
+                        <input type="text" class="form-control" id="surname" name="surname" value="<%= user.surname %>" required pattern="[A-Za-z\s]+">
+                        <div class="invalid-feedback">
+                            Please provide a valid surname.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" value="<%= user.username %>" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid username.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="<%= user.email %>" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+                        <div class="invalid-feedback">
+                            Please provide a valid email address.
+                        </div>
+                    </div>
+
+                    <button type="button" id="submitBtn" class="btn btn-primary">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Experience Form -->
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <h1 class="display-3 fw-bold lh-1 text-body-emphasis mb-3">Edit Your Profile</h1>
+                <!-- Add any other information or instructions here -->
+            </div>
+            <div class="col-md-10 mx-auto col-lg-5">
+                <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary" action="/edit-profile" method="POST" novalidate>
+                    <!-- Display validation errors -->
+                    <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+                        <div class="alert alert-danger">
+                            <ul>
+                                <% errors.forEach(error => { %>
+                                    <li><%= error.msg %></li>
+                                <% }); %>
+                            </ul>
+                        </div>
+                    <% } %>
+
+                    <div class="mb-3">
+                        <label for="experienceTitle" class="form-label">Experience Title</label>
+                        <input type="text" class="form-control" id="experienceTitle" name="experienceTitle">
+                    </div>
+                    <div class="mb-3">
+                        <label for="experienceCompany" class="form-label">Company</label>
+                        <input type="text" class="form-control" id="experienceCompany" name="experienceCompany">
+                    </div>
+                    <div class="mb-3">
+                        <label for="experienceStartDate" class="form-label">Start Date</label>
+                        <input type="date" class="form-control" id="experienceStartDate" name="experienceStartDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="experienceEndDate" class="form-label">End Date</label>
+                        <input type="date" class="form-control" id="experienceEndDate" name="experienceEndDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="experienceDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="experienceDescription" name="experienceDescription"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="addExperienceBtn">Add Experience</button>
+                    
+                    <!-- Display added experiences -->
+                    <ul id="experienceList"></ul>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS (for Bootstrap components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+            const submitBtn = document.getElementById('submitBtn');
+
+            submitBtn.addEventListener('click', function () {
+                // Check if the form is valid using the browser's built-in checkValidity method
+                if (form.checkValidity()) {
+                    form.submit();  // If valid, submit the form
+                } else {
+                    // If not valid, mark the form controls as touched to trigger the validation messages
+                    form.classList.add('was-validated');
+                }
+            });
+        });
+
+        document.getElementById('addExperienceBtn').addEventListener('click', function () {
+            const title = document.getElementById('experienceTitle').value;
+            const company = document.getElementById('experienceCompany').value;
+            const startDate = document.getElementById('experienceStartDate').value;
+            const endDate = document.getElementById('experienceEndDate').value;
+            const description = document.getElementById('experienceDescription').value;
+
+            // Add the experience to the list
+            const experienceItem = document.createElement('li');
+            experienceItem.innerHTML = `<strong>${title}</strong> at ${company} (${startDate} - ${endDate}): ${description}`;
+            document.getElementById('experienceList').appendChild(experienceItem);
+
+            // Clear the input fields
+            document.getElementById('experienceTitle').value = '';
+            document.getElementById('experienceCompany').value = '';
+            document.getElementById('experienceStartDate').value = '';
+            document.getElementById('experienceEndDate').value = '';
+            document.getElementById('experienceDescription').value = '';
+        });
+    </script>    
+</body>
+</html>
