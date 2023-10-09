@@ -11,7 +11,6 @@
   - [Configuration](#configuration)
 - [Usage](#usage)
 - [Architecture and Technologies](#architecture-and-technologies)
-- [Third-party Services](#third-party-services)
 - [Contributing](#contributing)
 - [Contact](#contact)
 - [License](#license)
@@ -67,7 +66,7 @@ Run the application:
 npm start
 ```
 
-### Visit http://localhost:3000 in your browser.
+Visit http://localhost:3000 in your browser.
 
 ## Architecture and Technologies
 *ByteFinder Co.* is built on a robust technology stack:
@@ -78,22 +77,19 @@ npm start
 - **Version Control:** Git.
 - **Project Management:** Trello.
 
-## Third-party Services
-In our quest to provide comprehensive job listings, we may integrate with services like Indeed or LinkedIn Jobs.
-
-- **Indeed Integration:** Access a vast and diverse job marketplace.
-- **LinkedIn Jobs Integration:** Personalized job recommendations leveraging LinkedIn's professional network.
+## License
+This project is licensed under the [MIT License](LICENSE).
 
 ## Contributing
 Contributions are welcome! Read the [Contributing Guidelines](CONTRIBUTING.md) for more information.
 
+## Acknowledgments
+Hats off to the incredible folks at the [ALX Africa](https://www.alxafrica.com/) for this amazing opportunity, the dynamic testing squad, and all our fellow developers who've contributed their expertise and feedback to make *ByteFinder Co.* a reality. Your collaboration and support have been the secret sauce behind our coding concoction. 
+
 ## Contact
-If you have any questions or feedback, feel free to reach out:
+Have burning questions, brilliant ideas, or just want to say hello? We're all ears and ready to chat!
 
-- **Email:** [Kholofelo Tladi](mailto:tladi.kholofelo@gmail.com)
-- **LinkedIn:** [Kholofelo Tladi](https://www.linkedin.com/in/kholofelotladi/)
-- **GitHub:** [Kholofelo Tladi](https://github.com/tladikholofelo)
-- **Twitter:** [@thatkholofelo](https://twitter.com/thatkholofelo)
+📧 Email: [tladi.kholofelo@gmail.com](mailto:tladi.kholofelo@gmail.com) 
 
-## License
-This project is licensed under the [MIT License](LICENSE).
+🔗 LinkedIn: [Kholofelo Tladi](https://www.linkedin.com/in/kholofelotladi/)
+
